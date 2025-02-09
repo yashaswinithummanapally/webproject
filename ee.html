@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three Cards Example</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    body{
+        overflow-x: hidden;
+    }
+    /* Style for the card container */
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 10px;
+      align-content: center;
+    }
+
+    /* Style for each card */
+    .card {
+      width: 50%;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-bottom: 50px;
+      text-align:left; /* Center the content within the card */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100%; /* Set height to 100% */
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 50px;
+    }
+
+    /* Style for the image within the card */
+    .card img {
+      max-width: 100%;
+      height: auto;
+      display: block; /* To remove extra spacing under the image */
+      margin-bottom: 10px; /* Add some space between the image and text */
+      margin: 0 auto;
+       /* Center the image horizontally */
+      
+    }
+    
+
+     /* Background color for Card 1 */
+     .card1 {
+      background-color: white; /* Use your preferred color code */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 750px;
+      width: 100%;
+      box-sizing: border-box;
+      font-family: 'Times New Roman', Times, serif;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card2 {
+      width: 40%;
+      box-sizing: border-box;
+      margin-top:50px;
+      margin-bottom: 70px;
+      text-align: left; /* Align the content within the card */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      border: none; /* Remove border */
+      height: 100%;
+      align-content: center;
+      margin-right: 5px;
+      margin-left: 150px;
+    }
+    .card2 img {
+      max-width: 10%;
+      height: auto;
+      display: block; /* To remove extra spacing under the image */
+      margin-bottom: 10px; /* Add some space between the image and text */
+      margin: 0 auto; /* Center the image horizontally */
+    }
+    /* Form styling */
+    .card2 form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      box-sizing: border-box;
+      font-family: 'Times New Roman', Times, serif;
+      color: black;
+      margin-top: 20px;
+      text-align: left;
+      border: none;
+    }
+
+    .card2 form label {
+      display: block;
+      margin-bottom: 8px;
+      color: #000000;
+    }
+
+    .card2 form input,
+    .card2 form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      border: 1px solid #000000;
+      border-radius: 5px;
+    }
+
+    .card2 form button {
+      margin: 5px auto;
+      margin-left: 90px;
+      background-color: #ff5733;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .card2 form button:hover {
+      background-color: #171716;
+    }
+    /* Style for the modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    /* Style for the modal content */
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    /* Style for the close button in the modal */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: #fff;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Add animation to the modal */
+    .modal-content {
+      animation: zoom 0.6s;
+    }
+
+    @keyframes zoom {
+      from {transform: scale(0)}
+      to {transform: scale(1)}
+    }
+    .text-description {
+            color: #ff5733;
+            text-align: left;
+            font-size: 30px;
+            margin-bottom:10px;
+            margin-top: 20px;
+            font-family:'Times New Roman', Times, serif;
+
+    }
+    .card3 {
+  width: 30%; /* Adjust the width as needed */
+  text-align: center;
+  align-content: center;
+  margin: 0 auto; /* Center the card horizontally */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: 300px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.card3 h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card3 p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+  </style>
+</head>
+<body>
+  <!-- First Card -->
+  <div class="card-container">
+    <div class="card card1">
+      <img src="https://i.ytimg.com/vi/pOX_EWQlwXk/maxresdefault.jpg" alt="Card 1 Image">
+      <p class="text-description" >krishnapatnam</p>
+      <p class="description">Andhra, Chinese, North Indian, Seafood, Biryani, Desserts, Beverages<br>
+        Road 36, Jubilee Hills, Hyderabad</p>
+    </div>
+
+    <!-- Second Card -->
+    <div class="card card2">
+        <form>
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required>
+    
+            <label for="time">Select Time:</label>
+            <input type="time" id="time" name="time" required>
+    
+            <label for="guestName">Guest Name:</label>
+            <input type="text" id="guestName" name="guestName" required>
+    
+            <label for="guests">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" min="1" required>
+    
+            <button type="button" onclick="submitReservation()">Submit Reservation</button>
+          </form>    
+    </div>
+  </div>
+
+  <!-- Third Card Below -->
+  <div class="card3" id="card4">
+    <div class="image-container">
+      <img src="https://b.zmtcdn.com/data/menus/521/18808521/d68e2cc3676c8301d0aa47f8bd890f38.jpeg" alt="Card 3 Image" onclick="openModal(1)">
+      <img src="https://image3.mouthshut.com/images/Restaurant/Menu/Krishnapatnam-Jubilee-Hills-Hyderabad-37380_118376.jpg" alt="Card 3 Image" onclick="openModal(2)">
+      <!-- Add more images as needed -->
+      
+      <img src="https://lh3.googleusercontent.com/GBCAIRkFjBZ8Z3rsw6qp3h7R3MRbGFQzHCf7a_x84uEjyM3u9C3yssq3Ctf7rItxN9et8PReFrzZ1JS5buMSu_IU6LbVNf1Oh-JalGln=w192-rw" alt="Card 3 Image" onclick="openModal(3)">
+    </div>
+  
+    <h2>MENU</h2>
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImg">
+    </div>
+  </div>
+  
+  <script>
+    // Open the modal with the specified image index
+    function openModal(index) {
+      document.getElementById('myModal').style.display = 'block';
+      document.getElementById('modalImg').src = getImageUrl(index);
+    }
+  
+    // Close the modal
+    function closeModal() {
+      document.getElementById('myModal').style.display = 'none';
+    }
+  
+    // Define a function to get the image URL based on the index
+    function getImageUrl(index) {
+      switch (index) {
+        case 1:
+          return 'https://b.zmtcdn.com/data/menus/521/18808521/d68e2cc3676c8301d0aa47f8bd890f38.jpeg';
+        case 2:
+          return 'https://image3.mouthshut.com/images/Restaurant/Menu/Krishnapatnam-Jubilee-Hills-Hyderabad-37380_118376.jpg';
+        // Add more cases for additional images
+        case 3:
+        return 'https://lh3.googleusercontent.com/GBCAIRkFjBZ8Z3rsw6qp3h7R3MRbGFQzHCf7a_x84uEjyM3u9C3yssq3Ctf7rItxN9et8PReFrzZ1JS5buMSu_IU6LbVNf1Oh-JalGln=w192-rw';
+        default:
+          return ''; // Default to an empty string or a placeholder image
+      }
+    }
+  </script>
+</body>
+</html>

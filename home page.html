@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden; /* Prevent scrolling */
+        background-image: url('https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg'); /* Replace 'your-background-image.jpg' with the actual path to your image */
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        color: #0a0a0a;
+    }
+    .header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Align vertically */
+        align-items: center; /* Align horizontally */
+        height: 100vh;
+        text-align: center; /* Center-align text */
+    }
+    
+    .header h1 {
+        margin: 0;
+        font-size: 3em; /* Increased font size for DineOut */
+        font-family: 'Cursive'; /* Change font family for DineOut */
+        color: #FF5733; /* Change the color to a specific hex value or color name */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add a subtle text shadow */
+    }
+    
+    .header p {
+        font-size: 1.2em; /* Set font size for the additional tag */
+        margin-top: 15px; /* Adjust the margin-top for spacing */
+        color: #0e0c0c; 
+        max-width: 0 auto;/* Change text color for the additional tag */
+    }
+    .cta-options {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        font-size: 1.2em;
+        text-decoration: none;
+        z-index: 1; /* Ensure it's above other elements */
+        display: flex;
+    }
+    .cta-options a {
+        margin-left: 10px;
+        color: #fff; /* Text color */
+        font-weight: bold;
+        transition: color 0.3s;
+        padding: 12px 24px;
+        background-color: #FF5733; /* Background color */
+        border: 2px solid #FF5733;
+        border-radius: 8px;
+        text-decoration: none; /* Remove underline */
+    }
+    
+    .cta-options a:hover {
+        color: #100c07;
+    }
+    
+    .footer {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 20px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.8); /* Darken the background color */
+        color: #fff; /* Set text color to white */
+        border-radius: 8px; /* Add rounded corners */
+    }
+    .featured-section {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20% 15%; /* Use percentages for padding to make it more responsive */
+        text-align: center;
+    }
+    
+    .featured-section h2 {
+        color: #FF5733;
+        font-size: 4em;
+        margin-bottom: 20px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .featured-section p {
+        color: #fff;
+        font-size: 2em;
+        margin-bottom: 40px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    
+    /* Call-to-Action Button Styles */
+    .cta-button {
+        background-color: #FF5733;
+        color: #fff;
+        padding: 14px 24px;
+        font-size: 1.2em;
+        text-decoration: none;
+        border-radius: 8px;
+        display: inline-block;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+    }
+    
+    .cta-button:hover {
+        background-color: #FF8C00;
+    }
+    
+    /* Card-like Layout Styles */
+    .card-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 50px;
+    }
+    @media screen and (max-width: 576px) {
+        .header h1 {
+            margin: 0;
+            font-size: 3em; /* Increased font size for DineOut */
+            font-family: 'Cursive'; /* Change font family for DineOut */
+            color: #FF5733; /* Change the color to a specific hex value or color name */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add a subtle text shadow */
+        }
+    
+        .header p {
+            font-size: 2 em; /* Set font size for the additional tag */
+            margin-top: 15px; /* Adjust the margin-top for spacing */
+            color: #0e0c0c; 
+            max-width: 0 auto;/* Change text color for the additional tag */
+        }
+        .cta-options {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 1.2em;
+            text-decoration: none;
+            z-index: 1; /* Ensure it's above other elements */
+            display: flex;
+        }
+        .cta-options a {
+            margin-left: 10px;
+            color: #fff; /* Text color */
+            font-weight: bold;
+            transition: color 0.3s;
+            padding: 12px 24px;
+            background-color: #FF5733; /* Background color */
+            border: 2px solid #FF5733;
+            border-radius: 8px;
+            text-decoration: none; /* Remove underline */
+        }
+    
+        .cta-options a:hover {
+            color: #100c07;
+        }
+        /* ... (previous styles) ... */
+        /* ... (previous styles) ... */
+    
+    
+        .featured-section {
+            padding: 58% 1%;
+        }
+    
+        .featured-section h2 {
+            font-size: 2.7em;
+            margin-bottom: 10px;
+        }
+    
+        .featured-section p {
+            font-size: 1.7em;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+        background-color: #FF5733;
+        color: #fff;
+        padding: 14px 24px;
+        font-size: 1.2em;
+        text-decoration: none;
+        border-radius: 8px;
+        display: inline-block;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+    }
+    
+    }
+    
+    /* Media query for medium screens */
+    @media screen and (min-width: 577px) and (max-width: 991px) {
+        .header h1 {
+            margin: 0;
+            font-size: 3em; /* Increased font size for DineOut */
+            font-family: 'Cursive'; /* Change font family for DineOut */
+            color: #FF5733; /* Change the color to a specific hex value or color name */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add a subtle text shadow */
+        }
+    
+        .header p {
+            font-size: 1.2em; /* Set font size for the additional tag */
+            margin-top: 15px; /* Adjust the margin-top for spacing */
+            color: #0e0c0c; 
+            max-width: 0 auto;/* Change text color for the additional tag */
+        }
+        .cta-options {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 1.2em;
+            text-decoration: none;
+            z-index: 1; /* Ensure it's above other elements */
+            display: flex;
+        }
+        .cta-options a {
+            margin-left: 10px;
+            color: #fff; /* Text color */
+            font-weight: bold;
+            transition: color 0.3s;
+            padding: 12px 24px;
+            background-color: #FF5733; /* Background color */
+            border: 2px solid #FF5733;
+            border-radius: 8px;
+            text-decoration: none; /* Remove underline */
+        }
+    
+        .cta-options a:hover {
+            color: #100c07;
+        }
+        /* ... (previous styles) ... */
+        /* ... (previous styles) ... */
+    
+        .featured-section {
+            padding: 32% 7%;
+        }
+    
+        .featured-section h2 {
+            font-size: 2.5em;
+        }
+    
+        .featured-section p {
+            font-size: 1.0 em;
+        }
+        .cta-button {
+            background-color: #FF5733;
+            color: #fff;
+            padding: 14px 24px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+    }
+    
+    /* Media query for large screens */
+    @media screen and (min-width: 992px) {
+        .header h1 {
+            margin: 0;
+            font-size: 3em; /* Increased font size for DineOut */
+            font-family: 'Cursive'; /* Change font family for DineOut */
+            color: #FF5733; /* Change the color to a specific hex value or color name */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add a subtle text shadow */
+        }
+    
+        .header p {
+            font-size: 1.2em; /* Set font size for the additional tag */
+            margin-top: 15px; /* Adjust the margin-top for spacing */
+            color: #0e0c0c; 
+            max-width: 0 auto;/* Change text color for the additional tag */
+        }
+        .cta-options {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 1.2em;
+            text-decoration: none;
+            z-index: 1; /* Ensure it's above other elements */
+            display: flex;
+        }
+        .cta-options a {
+            margin-left: 10px;
+            color: #fff; /* Text color */
+            font-weight: bold;
+            transition: color 0.3s;
+            padding: 12px 24px;
+            background-color: #FF5733; /* Background color */
+            border: 2px solid #FF5733;
+            border-radius: 8px;
+            text-decoration: none; /* Remove underline */
+        }
+    
+        .featured-section {
+            padding: 20% 10%;
+        }
+    
+        .featured-section h2 {
+            font-size: 3em;
+        }
+    
+        .featured-section p {
+            font-size: 2.2em;
+        }
+        .cta-button {
+            background-color: #FF5733;
+            color: #fff;
+            padding: 14px 24px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+    }
+    </style>   
+</head>
+    <body>
+    <div class="cta-options">
+        <a href="signup page.html">Sign Up</a>
+        <a href="login page.html">Login</a>
+    </div>
+    <div class="featured-section">
+        <h2>DineOut</h2>
+        <p>Find the best restaurants and cafes near you.</p>
+        <a href="learnmore page.html" class="cta-button">Learn More</a>
+    </div>
+    </div>
+    </div>
+    </body>
+    </html>

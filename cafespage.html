@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafes Listings</title>
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #spinner {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .5s ease-out, visibility 0s linear .5s;
+            z-index: 99999;
+        }
+
+        #spinner.show {
+            transition: opacity .5s ease-out, visibility 0s linear 0s;
+            visibility: visible;
+            opacity: 1;
+        }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    header {
+            background-color: #FF5733;
+            color: #fff;
+            text-align: right;
+            padding:0px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow effect */
+        }
+        .header h1 {
+    margin-left: 20px;
+    font-family: 'Times New Roman', Times, serif; /* Adjust the value as needed */
+}
+
+    .h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+        }
+        h2{
+            font-size: 2em;
+            font-family: 'Times New Roman', Times, serif;
+            align-items:;
+        }
+        .navbar {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items:self-start;
+                    padding: 3px;
+                    background-color:#FF5733;
+                    color: #fff;
+        }
+        .search-input {
+            padding: 5px;
+            width: 400px; /* Increase the width as needed */
+        }
+
+        .restaurant-container {
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .restaurant-card {
+            display: inline-block;
+            width: 300px;
+            height: 280px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            
+            transition: 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+
+        .restaurant-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .restaurant-info {
+            padding: 15px;
+        }
+
+        .restaurant-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            margin-top: 12px;
+        }
+
+        .restaurant-rating {
+            color: #FF5733;
+            font-size: 16px;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin: 20px;
+        }
+        .search-input {
+            padding: 13px;
+            width: 300px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none; /* Remove the default focus outline */
+        }
+
+        /* Style the placeholder text */
+        .search-input::placeholder {
+            color: #888;
+        }
+
+        /* Style when the search input is focused */
+        .search-input:focus {
+            border-color: #FF5733;
+            box-shadow: 0 0 5px rgba(255, 87, 51, 0.7);
+        }
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .restaurant-card a {
+            text-decoration: none; /* Remove underline */
+            color: #040404; /* Change link color to match text color */
+        }
+
+        .restaurant-card a:hover {
+            /* Optionally, you can add styles for the hover state to indicate interactivity */
+            color: #FF5733; /* Change color on hover */
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+        <h1>DineOut</h1>
+    </div>
+    <nav>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search by name" oninput="searchRestaurants(this.value)">
+        </div>
+    </nav>
+    </header>
+    <div class="restaurant-container" id="restaurantContainer">
+        <!-- Restaurants will be dynamically added here -->
+    
+    <script>
+        var restaurants = [
+    {
+        name: "By the Bay",
+        image: "https://d4t7t8y8xqo0t.cloudfront.net/resized/720X480/restaurant%2F673017%2Frestaurant120210213092812.jpg",
+        rating: 4.3
+    },
+    {
+        name: "Tiger Lily Bistro",
+        image: "https://imgmedia.lbb.in/media/2020/06/5ed8bf2a486f1b28614e94c2_1591263018414.jpg",
+        rating: 4.3
+    },
+    {
+        name: "Lé Vantage Cafe Bar",
+        image: "https://image3.mouthshut.com/images/imagesp/925955148s.png",
+        rating: 4.4
+    },
+    {
+        name: "Fullfills",
+        image: "https://b.zmtcdn.com/data/pictures/9/19560349/88aa5e4f6b5a384045b662d778183f62.jpeg",
+        rating: 4.1
+    },
+    {
+        name: "So. The Sky Kitchen",
+        image: "https://southernplaza.in/upload/album/thumb/1577443433_terrace_lounge.jpg",
+        rating: 3.9
+    },
+    {
+        name: "Roastery Coffee House",
+        image: "https://b.zmtcdn.com/data/pictures/9/18544039/3221cd60ff764d6d7403790f52768355.jpg",
+        rating: 4.4
+    },
+    {
+        name: "Autumn Leaf Cafe",
+        image: "https://files.yappe.in/place/full/autumn-leaf-cafe-77678.webp",
+        rating: 3.9
+    },
+    {
+        name: "Beluga",
+        image: "https://i.pinimg.com/736x/6d/32/18/6d32187e16143945a20087e61731ccbe.jpg",
+        rating: 4.3
+    },
+    {
+        name: "Humming Bird Cafe",
+        image: "https://lh3.googleusercontent.com/p/AF1QipNfuqU4IszO6GrQNmcGS_9zefty4oHTzwiWfzWh=s1360-w1360-h1020",
+        rating: 3.7
+    },
+    {
+        name: "SkyPark Cafe",
+        image: "https://lh3.googleusercontent.com/p/AF1QipOS-uRrNYHNVkkeb_MjMlYLv0oWflJWJSW49nDB=s1360-w1360-h1020",
+        rating: 3.4
+    },
+    {
+        name: "Cafe Niloufer Classic",
+        image: "https://lh3.googleusercontent.com/p/AF1QipPCKhVKp2k-uHCCVAm44KrF4KgTEvWcTatmIJWd=s1360-w1360-h1020",
+        rating: 4.3
+    },
+    {
+        name: "Terrassen Cafe",
+        image: "https://lh3.googleusercontent.com/p/AF1QipP_PwbUclzI07T-M4G_uVZVoAq-oxlPW9bYcoNu=s1360-w1360-h1020",
+        rating: 4.6
+    },
+    {
+        name: "Aaromale",
+        image: "https://b.zmtcdn.com/data/pictures/9/18671839/97a13e0bc3d9eda7bdc3a18472ac2224_featured_v2.jpg",
+        rating: 4.4
+    },
+    {
+        name: "Ironhill Cafe",
+        image: "https://b.zmtcdn.com/data/reviews_photos/038/fb4422cb63cce038a1edfd9472f5e038_1573224686.jpg?output-format=webp&fit=around|771.75:416.25&crop=771.75:416.25;*,*",
+        rating: 4.2
+    },
+    {
+        name: "7 Sisters",
+        image: "https://www.visittuolumne.com/images/legacyaccountimages/2e79fc9d-07ca-4293-8d40-f25140e7324e.jpg",
+        rating: 4.5
+    },
+    {
+        name: "La Vie En Rose",
+        image: "https://cdn.telanganatoday.com/wp-content/uploads/2023/12/la-vie-en-rose.jpg",
+        rating: 4.1
+    },
+    ];
+    function createRestaurantCard(restaurant) {
+        var card = document.createElement('div');
+        card.className = 'restaurant-card';
+
+        // Create a link for each restaurant
+        var link = document.createElement('a');
+        link.href = 'restaurant-details1.html?name=' + encodeURIComponent(restaurant.name);
+
+        var img = document.createElement('img');
+        img.src = restaurant.image;
+        img.alt = restaurant.name;
+        img.className = 'restaurant-img';
+
+        var name = document.createElement('div');
+        name.className = 'restaurant-name';
+        name.textContent = restaurant.name;
+
+        var rating = document.createElement('div');
+        rating.className = 'restaurant-rating';
+        rating.textContent = 'Rating: ' + restaurant.rating;
+
+        link.appendChild(img);
+        link.appendChild(name);
+        link.appendChild(rating);
+        card.appendChild(link);
+
+        return card;
+    }
+
+    function displayRestaurants() {
+        var container = document.getElementById('restaurantContainer');
+
+        restaurants.forEach(function (restaurant) {
+            var card = createRestaurantCard(restaurant);
+            container.appendChild(card);
+        });
+    }
+
+    window.onload = function () {
+        displayRestaurants();
+    };
+    </script>
+</body>
+
+</html>

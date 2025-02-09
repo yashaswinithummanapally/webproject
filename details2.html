@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Profile</title>
+    <style>
+        body {
+    font-family: times new roman, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    width: 250px;
+    background-color: #FF5733;
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+}
+
+.nav-header {
+    text-align: center;
+}
+
+.logo {
+    width: 60px; /* Increase the width as needed */
+    height: 60px; /* Increase the height as needed */
+    margin-bottom: 10px;
+}
+
+h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.5em;
+    color: WHITE;
+}
+
+.nav-item {
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.3em;
+    font-family: times new roman, sans-serif;
+}
+
+.profile-container {
+    margin-left: 300px;
+    padding: 20px;
+	color: black;
+	font-size: 3 em;
+}
+
+.profile-details {
+    display: none;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.arrow {
+    margin-left: 10px;
+	color: white;
+}
+
+        .profile-container {
+            margin-left: 250px; /* Adjust as needed */
+            padding: 20px;
+            color: black;
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-header">
+            <img src="https://www.svgrepo.com/show/341256/user-avatar-filled.svg" alt="Logo" class="logo">
+            <h2>VARSHITHA</h2>
+        </div>
+        <div class="nav-item" onclick="toggleVisibility('Address')">
+            Address
+            <span class="arrow">▼</span>
+        </div>
+        <div class="nav-item" onclick="toggleVisibility('Order History')">
+            Order History
+            <span class="arrow">▼</span>
+        </div>
+        <div class="nav-item" onclick="toggleVisibility('Favourites')">
+            Favourites
+            <span class="arrow">▼</span>
+        </div>
+        <div class="nav-item" onclick="toggleVisibility('Payments')">
+            Payments 
+            <span class="arrow">▼</span>
+        </div>
+        <div class="nav-item" onclick="toggleVisibility('Settings')">
+            Settings
+            <span class="arrow">▼</span>
+        </div>
+        <!-- Add more profile elements as needed -->
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-details" id="fullName">
+            <label>Full Name:</label>
+            <span id="fullNameValue"></span>
+        </div>
+
+        <div class="profile-details" id="email">
+            <label>Email:</label>
+            <span id="emailValue"></span>
+        </div>
+
+        <div class="profile-details" id="phone">
+            <label>Phone:</label>
+            <span id="phoneValue"></span>
+        </div>
+        <!-- Add more profile elements as needed -->
+    </div>
+    <script>
+        var userProfile = {
+            fullName: "John Doe",
+            email: "john@example.com",
+            phone: "123-456-7890"
+            // Add more profile elements as needed
+        };
+
+        function toggleVisibility(elementId) {
+            var element = document.getElementById(elementId);
+            var arrow = element.previousElementSibling.querySelector('.arrow');
+
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                arrow.innerHTML = "▲";
+            } else {
+                element.style.display = "none";
+                arrow.innerHTML = "▼";
+            }
+        }
+
+        function populateProfileData() {
+            for (var key in userProfile) {
+                if (userProfile.hasOwnProperty(key)) {
+                    var element = document.getElementById(key + 'Value');
+                    if (element) {
+                        element.textContent = userProfile[key];
+                    }
+                }
+            }
+        }
+
+        window.onload = populateProfileData;
+    </script>
+</body>
+</htm

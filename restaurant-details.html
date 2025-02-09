@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Details</title>
+    <!-- Add any additional head content if needed -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            background-color: #FF5733;
+            color: #fff;
+            text-align: right;
+            padding: 0px;
+            height: 90px;
+            display: flex;
+            justify-content: space-between;
+            width: 150%;
+            align-items: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            margin-left: 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .restaurant-details-container {
+            margin-left: 50px;
+            margin-right: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+            height: auto;
+            
+        }
+
+        .restaurant-details {
+            margin-left: 70px;
+            margin-top: 25px;
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .restaurant-details img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .restaurant-description {
+            font-size: 16px;
+            color: #333;
+        }
+        .reservation-card {
+            width: 25%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            margin-top: 20px;
+            padding: 20px;
+            margin-left: 20px;
+            margin-right: 150px;
+        }
+        
+
+        .reservation-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #000000;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .reservation-form input{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #000000;
+            border-radius: 5px;
+        }
+        .reservation-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .reservation-form button {
+            margin: 5px auto ; 
+            margin-left: 90px;
+            background-color: #ff5733;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            justify-content: center;
+        }
+
+        .reservation-form button:hover {
+            background-color: #171716;
+        }
+        .menu-images-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        .menu-image {
+            width: 30%;
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+        .menu-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .restaurant-name {
+            color: #FF5733; /* Set your desired color */
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 27px;
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
+        .restaurant-description {
+            color: black; /* Set your desired color */
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 19px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1>DineOut</h1>
+        </div>
+    </header>
+
+    <div class="restaurant-details-container" id="restaurantDetailsContainer">
+        <!-- The details for the selected restaurant will be dynamically inserted here -->
+    </div>
+
+    <div class="menu-images-container" id="menuImagesContainer">
+        <!-- Container for displaying multiple menu images -->
+    </div>
+    
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var selectedRestaurant = urlParams.get('name');
+
+        // Details for each restaurant
+        var restaurantDetails = {
+            "Paradise- A legend since 1953": {
+                description: "North Indian, Mughlai, Biryani\n SP road, Begumpet.",
+                image: "https://static.toiimg.com/thumb/msid-89515763,width-1280,height-720,resizemode-4/89515763.jpg"
+            },
+            "Ohri's Jiva": {
+                description: "North Indian, Rajasthani, South Indian, Chinese, Desserts\nBegumpet, Hyderabad.",
+                image: "https://im1.dineout.co.in/images/uploads/restaurant/sharpen/9/e/p/p9797-1682512343644919d71abd5.jpg?tr=tr:n-large"
+            },
+            "ABs - Absolute Barbecues": {
+                description: "BBQ, North Indian, Desserts \nGachibowli, Hyderabad.",
+                image: "https://im1.dineout.co.in/images/uploads/restaurant/sharpen/1/f/d/p118741-167878121964102b23a01ed.jpg?tr=tr:n-large"
+            },
+            "Barbeque Nation": {
+                description: "North Indian\nPanjagutta, Hyderabad.",
+                image: "https://assets.telegraphindia.com/telegraph/2021/Jan/1609444005_01bus-barbeque_ne-dc.jpg"
+            },
+            "Rayalaseema Ruchulu": {
+                description: "Andhra, South Indian, Chinese, North Indian, Biryani, Desserts, Beverages\nRoad 36, Jubilee Hills, Hyderabad.",
+                image: "https://rayalaseemaruchulu.com/assets/images/jubilee_hills_1010.jpg"
+            },
+            "Subway": {
+                description: "Healthy Food, Sandwich, Fast Food, Wraps, Salad, Beverages\nJubilee Hills, Hyderabad.",
+                image: "https://etimg.etb2bimg.com/photo/84966397.cms"
+            },
+            "Amogham - The Lake View Restaurant": {
+                description: "North Indian, Chinese\nNecklace Road, Hyderabad.",
+                image: "https://d4t7t8y8xqo0t.cloudfront.net/resized/720X480/restaurant%2F669525%2Frestaurant220191031101358.jpg"
+            },
+            "Exotica": {
+                description: "North Indian, Biryani, Kebab, Chinese, Oriental, Desserts, Shake, Beverages\n12th Square Building, Banjara Hills, Hyderabad",
+                image: "https://b.zmtcdn.com/data/pictures/4/90744/65253aa7aafbc25080f6948496e2ef06.jpg"
+            },
+            "Angaara": {
+                description: "Chinese, North Indian, Seafood, Sichuan\nHimayath Nagar, Hyderabad",
+                image: "https://files.yappe.in/place/full/angaara-restaurant-bachupally-3964937.webp"
+            },
+            "Mehfil Restaurant": {
+                description: "Biryani, Chinese, Kebab, Mughlai, North Indian\nAttapur, Hyderabad.",
+                image: "https://lh5.googleusercontent.com/p/AF1QipO8VYeJQx4-jkz1ZNZxJLe9AGSYx0L7ydXOiPLu=w480-h300-k-n-rw"
+            },
+            "Sitara hotel": {
+                description: "North Indian, Chinese, Andhra, Biryani, Seafood, Mughlai, Ice Cream, Beverages\nBanjara Hills, Hyderabad.",
+                image: "https://images.jdmagicbox.com/comp/hyderabad/l7/040pxx40.xx40.161117214134.r8l7/catalogue/hotel-sitara-grand-vinayak-nagar-rangareddy-hotels-zj817.jpg?clr=#333333"
+            },
+            "pista house": {
+                description: "Biryani, North Indian, Chinese, Kebab, Seafood, Ice Cream, Desserts, Beverages\nCharminar Area, Charminar, Hyderabad.",
+                image: "https://content3.jdmagicbox.com/comp/hyderabad/s2/040pxx40.xx40.170524110058.d6s2/catalogue/pista-house-gachibowli-hyderabad-bakeries-0uai92xizv.jpg"
+            },
+            "kritunga": {
+                description: "South Indian, North Indian\nPadmarao Nagar, Secunderabad",
+                image: "https://img.restaurantguru.com/r8e6-Kritunga-Restaurant-The-Palegars-cuisine-Medchal-facade.jpg"
+            },
+            "Krishnapatnam": {
+                description: "Andhra, Chinese, North Indian, Seafood, Biryani, Desserts, Beverages\nRoad 36, Jubilee Hills, Hyderabad.",
+                image: "https://i.ytimg.com/vi/pOX_EWQlwXk/maxresdefault.jpg"
+            },
+            "Marigold Restaurant": {
+                description: "North Indian, Biryani, Chinese\nGachibowli, Hyderabad.",
+                image: "https://b.zmtcdn.com/data/pictures/6/92586/39d90a60e3d85842b2b1d25cfc0176b9_featured_v2.jpg"
+            },
+            "The Park Restaurant": {
+                description: "South Indian, North Indian, Biryani, Chinese, Seafood, Desserts\nNizampet, Hyderabad.",
+                image: "https://assets.zeezest.com/blogs/PROD_Banner%20-%20Aish_1661421955093.jpg"
+            },
+            };
+
+        var menuImages = {
+            "Paradise- A legend since 1953": [
+                "https://b.zmtcdn.com/data/reviews_photos/248/5c5268c64218d1bb48b2b7fc58869248_1613388137.jpg?fit=around|750:500&crop=750:500;*,*",
+                "https://b.zmtcdn.com/data/reviews_photos/248/5c5268c64218d1bb48b2b7fc58869248_1613388137.jpg?fit=around|750:500&crop=750:500;*,*",
+                // Add more menu images as needed
+            ],
+            "Ohri's Jiva": [
+                "https://example.com/menu3.jpg",
+                "https://example.com/menu4.jpg",
+                // Add more menu images as needed
+            ],
+            // Add menu images for other restaurants
+        };
+
+        // Display the details for the selected restaurant
+        var detailsContainer = document.getElementById('restaurantDetailsContainer');
+var details = restaurantDetails[selectedRestaurant];
+
+if (details) {
+    detailsContainer.innerHTML = '<div class="restaurant-details">' +
+        '<img src="' + details.image + '" alt="' + selectedRestaurant + '">' +
+        '<h2 class="restaurant-name">' + selectedRestaurant + '</h2>' +
+        '<p class="restaurant-description">' + details.description.replace(/\n/g, '<br>') + '</p>' +
+        '</div>';
+
+            // Add reservation card for each restaurant
+            var reservationCard = document.createElement('div');
+            reservationCard.className = 'reservation-card';
+            reservationCard.innerHTML = 
+                '<form class="reservation-form">' +
+                '<label for="date">Select Date:</label>' +
+                '<input type="date" id="date" name="date" required>' +
+
+                '<label for="time">Select Time:</label>' +
+                '<input type="time" id="time" name="time" required>' +
+
+                '<label for="guestName">Guest Name:</label>' +
+                '<input type="text" id="guestName" name="guestName" required>' +
+
+                '<label for="guests">Number of Guests:</label>' +
+                '<input type="number" id="guests" name="guests" min="1" required>' +
+
+                '<button type="button" onclick="submitReservation()">Submit Reservation</button>' +
+                '</form>' +
+                '</div>';
+
+            detailsContainer.appendChild(reservationCard);
+
+            // Display menu images for the selected restaurant
+            var menuImagesContainer = document.getElementById('menuImagesContainer');
+            var menuImagesList = menuImages[selectedRestaurant];
+            if (menuImagesList && menuImagesList.length > 0) {
+                menuImagesList.forEach(function (menuImage) {
+                    var menuImageElement = document.createElement('div');
+                    menuImageElement.className = 'menu-image';
+                    menuImageElement.innerHTML = '<img src="' + menuImage + '" alt="Menu Image">';
+                    menuImagesContainer.appendChild(menuImageElement);
+                });
+            } else {
+                menuImagesContainer.innerHTML = '<p>No menu images available for ' + selectedRestaurant + '.</p>';
+            }
+        } else {
+            detailsContainer.innerHTML = '<p>No details available for ' + selectedRestaurant + '.</p>';
+        }
+    </script>
+</body>
+
+</html>

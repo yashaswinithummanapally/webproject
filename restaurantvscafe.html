@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RestaurantVSCafe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #FF5733;
+            color: #fff;
+            text-align: left;
+            padding: 25px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        h2 { 
+            text-align: center;
+            font-size: 2.0em;
+            color:#FF5733;
+            font-family: 'Times New Roman', Times, serif;
+            
+
+        }
+        .tag-container {
+            text-align: center;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #FF5733;
+            padding: 50px 40px;
+            margin: 50px;
+            border-radius: 15px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 50px;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .tag img {
+            max-width: 90%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .tag-name {
+            font-style: times new roman;
+            font-size: 30px;
+        }
+        .card {
+            display: inline-block;
+            background-color: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            height: 400px; /* Set the card height */
+            align-items:center;
+        }
+
+        .card a {
+            display: block;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card img {
+            width: 100%;
+            max-height: 75%; /* Set the image height to 75% of the card height */
+            object-fit: cover; /* Maintain aspect ratio and cover the available space */
+            border-bottom: 1px solid #ddd; /* Add a border to separate image and content */
+        }
+
+        .card-content {
+            padding: 15px;
+            height: 25%; /* Set the content height to 25% of the card height */
+            box-sizing: border-box; 
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            font-size: 1.2em;
+            color: #FF5733;/* Include padding and border in the total height */
+        }
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: space-between;
+            height: 100vh; /* Set the height to 100% of the viewport height */
+        }
+        /* Add your additional styles or content below */
+        /* For example:
+        section {
+            padding: 20px;
+        }
+        */
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <h1>DineOut</h1>
+        </div>
+    </header>
+
+    <!-- Add your webpage content below this line -->
+    <section>
+        <h2>what are you looking for...</h2>
+
+        <div class="card-container" id="cards-container">
+            <div class="card">
+                <a href="reservation page.html">
+                    <img src="https://resizer.otstatic.com/v2/photos/wide-large/3/58060539.jpg" alt="RESTAURANT">
+                    <div class="card-content">
+                        <h3>RESTAURANT</h3>
+    
+                    </div>
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="reservation2 page.html">
+                    <img src="https://w0.peakpx.com/wallpaper/260/440/HD-wallpaper-cafe-cappuccino-lovely-fresh-beans-cappuccino-capuchino-coffee-beans-nice-watch-coffee-cup-morning.jpg" alt="CAFE">
+                    <div class="card-content">
+                        <h3>CAFE</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Add more content as needed -->
+    </section>
+</body>
+
+</html>

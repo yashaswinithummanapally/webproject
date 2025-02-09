@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Reservation Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Center content vertically */
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 850px;
+            max-height: 650px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .image-container {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0px;
+        }
+
+        .arrow-container {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            margin-top: -50px; /* Adjust as needed */
+        }
+
+        .arrow {
+            font-size: 24px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .text-description {
+            color: #ff5733;
+            text-align: left;
+            font-size: 30px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .description {
+            text-align: left;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .form-container {
+            width: 100%;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+            color: black;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #000000;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #000000;
+            border-radius: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        button {
+            margin: 5px auto;
+            margin-left: 90px;
+            background-color: #ff5733;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            justify-content: center;
+        }
+
+        button:hover {
+            background-color: #171716;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <div id="imageCarousel" class="carousel">
+                <div class="arrow-container">
+                    <button class="arrow" onclick="navigateCarousel(-1)">&#9665;</button>
+                    <button class="arrow" onclick="navigateCarousel(1)">&#9655;</button>
+                </div>
+                <img class="carousel-image" src="https://i.ytimg.com/vi/pOX_EWQlwXk/maxresdefault.jpg" alt="Reservation Image">
+                <img class="carousel-image" src="https://images.picxy.com/cache/2019/9/23/c4d5bfa8304e793772a391b4424f9d57.jpg" alt="Reservation Image">
+                <img class="carousel-image" src="https://b.zmtcdn.com/data/dish_photos/9ea/bd7f471f24d2e060ac0d114a4e2d89ea.jpg" alt="Third Image">
+                <img class="carousel-image" src="https://content.jdmagicbox.com/comp/hyderabad/b1/040pxx40.xx40.210810120214.z4b1/catalogue/krishnapatnam-forum-sujana-mall-kphb-colony-hyderabad-restaurants-zlbjqjxvvd.jpg">
+                <img class="carousel-image" src="https://b.zmtcdn.com/data/pictures/1/18808521/57573dfa7c84ca943505f39dc9b90ace.jpg" alt="Second Image">
+                <img class="carousel-image" src="https://thegastronomictale.files.wordpress.com/2021/10/img_4036.jpg?w=1024">
+            </div>
+            <p class="text-description">Krishnapatnam</p>
+            <p class="description">Description: Your description goes here.</p>
+        </div>
+        <div class="form-container">
+        </div>
+    </div>
+
+    <form id="reservationForm">
+        <label for="date">Select Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Select Time:</label>
+        <input type="time" id="time" name="time" required>
+
+        <label for="guestName">Guest Name:</label>
+        <input type="text" id="guestName" name="guestName" required>
+
+        <label for="guests">Number of Guests:</label>
+        <input type="number" id="guests" name="guests" min="1" required>
+
+        <button type="button" onclick="submitReservation()">Submit Reservation</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentImageIndex = 0;
+            const images = document.querySelectorAll("#imageCarousel img");
+
+            function showImage(index) {
+                images.forEach((img, i) => {
+                    img.style.display = i === index ? "block" : "none";
+                });
+            }
+
+            function navigateCarousel(direction) {
+                currentImageIndex += direction;
+                if (currentImageIndex >= images.length) {
+                    currentImageIndex = 0;
+                } else if (currentImageIndex < 0) {
+                    currentImageIndex = images.length - 1;
+                }
+                showImage(currentImageIndex);
+            }
+
+            document.getElementById("imageCarousel").addEventListener("click", function (event) {
+                const { clientX } = event;
+                const { left, right } = this.getBoundingClientRect();
+                const midPoint = (left + right) / 2;
+
+                if (clientX < midPoint) {
+                    navigateCarousel(-1); // Clicked on the left side, go to the previous image
+                } else {
+                    navigateCarousel(1); // Clicked on the right side, go to the next image
+                }
+            });
+
+            // Show the first image initially
+            showImage(currentImageIndex);
+        });
+    </script>
+</body>
+</html>

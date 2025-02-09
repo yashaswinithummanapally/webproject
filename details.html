@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Reservation Form</title>
+    <style>
+        body {
+            align-items: space-between;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content:space-around;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items:flex-start;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 750px;
+            max-height: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .image-container {
+            flex-shrink: 0;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            text-align: left; /* Center-align text within the container */
+            max-width: 1000px;
+        }
+
+        img {
+            max-width: 100%; /* Make sure the image doesn't exceed the container width */
+            height: auto; /* Allow the image to adjust its height based on the width */
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .text-description {
+            color: #ff5733;
+            text-align:left;
+            font-size: 30px;
+            margin-bottom:0px;
+            margin-top: 0px;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+        .location-text {
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .form-container {
+            width: 100%; /* Fill the remaining width */
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ff5733;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #89837f;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="https://i.ytimg.com/vi/pOX_EWQlwXk/maxresdefault.jpg" alt="Reservation Image">
+            <p class="text-description">Krishnapatnam</p>
+            <p class="description">Andhra, Chinese, North Indian, Seafood, Biryani, Desserts, Beverages<br>
+                Road 36, Jubilee Hills, Hyderabad</p>
+        </div>
+        <div class="form-container">
+        </div>
+    </div>
+
+<form id="reservationForm">
+    <label for="date">Select Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">Select Time:</label>
+    <input type="time" id="time" name="time" required>
+
+    <label for="guestName">Guest Name:</label>
+    <input type="text" id="guestName" name="guestName" required>
+
+    <label for="guests">Number of Guests:</label>
+    <input type="number" id="guests" name="guests" min="1" required>
+
+
+    </select>
+
+    <button type="button" onclick="submitReservation()">Submit Reservation</button>
+</form>
+
+<script>
+    function submitReservation() {
+        // You can add JavaScript code here to handle the form submission
+        // For a complete solution, you would typically send this data to a server-side script for processing
+        alert("Reservation submitted!\n\nDate: " + document.getElementById("date").value +
+            "\nTime: " + document.getElementById("time").value +
+            "\nGuest Name: " + document.getElementById("guestName").value +
+            "\nNumber of Guests: " + document.getElementById("guests").value +
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Profile</title>
+    <style>
+        body {
+            font-family: times new roman, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex; /* Added to make the body a flex container */
+            justify-content: left; /* Added to horizontally center the content */
+            align-items: center; /* Added to vertically center the content */
+            height: 100vh; /* Added to make sure the container takes the full height of the viewport */
+        }
+
+        .navbar {
+            width: 250px;
+            background-color: #FF5733;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+        }
+
+        .nav-header {
+            text-align: center;
+        }
+
+        .logo {
+            width: 60px; /* Increase the width as needed */
+            height: 60px; /* Increase the height as needed */
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #fff;
+            margin: 0;
+            font-size: 2em;
+        }
+        h2 {
+            font-size: 1.5em;
+            color: WHITE;
+        }
+        .nav-item {
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.3em;
+            font-family: times new roman, sans-serif;
+            display: block; /* Added to make them block-level elements */
+            margin-bottom: 10px; /* Added spacing between items */
+        }
+        .profile-container {
+            margin-left: 300px;
+            padding: 20px;
+            color: black;
+            font-size: 3em;
+        }
+
+        .profile-details, .address-container, .booking-history-container, .favourites-container, .payments-container, .settings-container {
+            display: none;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px; /* Adjusted border radius for sharper corners */
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+            width: 100%; /* Adjusted width to fit the screen */
+        }
+
+        .card-body {
+            padding: 30px; /* Increased padding */
+        }
+
+        .card-title {
+            font-size: 1.5em; /* Increased font size */
+            color: #333;
+            margin-bottom: 20px; /* Increased margin */
+        }
+
+        .card-text {
+            font-size: 1.3em; /* Increased font size */
+            color: #666;
+            line-height: 1.6; /* Increased line height */
+        }
+
+        .card-text::before {
+            content: "\2022"; /* Bullet character */
+            color: #FF5733; /* Accent color */
+            margin-right: 15px; /* Increased margin */
+        }
+
+        .card-text p {
+            margin: 10px 0; /* Increased margin */
+        }
+
+        .card-text p:first-child {
+            margin-top: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-header">
+            <img src="https://www.svgrepo.com/show/341256/user-avatar-filled.svg" alt="Logo" class="logo">
+            <h2>VARSHITHA</h2>
+        </div>
+        <div class="nav-item" onclick="toggleVisibility('addressContainer')">Address</div>
+        <div class="nav-item" onclick="toggleVisibility('bookingHistoryContainer')">Booking History</div>
+        <div class="nav-item" onclick="toggleVisibility('favouritesContainer')">Favourites</div>
+        <div class="nav-item" onclick="toggleVisibility('paymentsContainer')">Payments</div>
+        <div class="nav-item" onclick="toggleVisibility('settingsContainer')">Settings</div>
+        <!-- Add more profile elements as needed -->
+    </div>
+
+    <div class="profile-container">
+        <div class="card address-container profile-details" id="addressContainer">
+            <div class="card-body">
+                <h3 class="card-title">Address</h3>
+                <p class="card-text" id="addressValue"></p>
+            </div>
+        </div>
+    
+        <div class="card booking-history-container profile-details" id="bookingHistoryContainer">
+            <div class="card-body">
+                <h3 class="card-title">Booking History</h3>
+                <p class="card-text" id="bookingHistoryValue"></p>
+            </div>
+        </div>
+    
+        <div class="card favourites-container profile-details" id="favouritesContainer">
+            <div class="card-body">
+                <h3 class="card-title">Favourites</h3>
+                <p class="card-text" id="favouritesValue"></p>
+            </div>
+        </div>
+    
+        <div class="card payments-container profile-details" id="paymentsContainer">
+            <div class="card-body">
+                <h3 class="card-title">Payments</h3>
+                <p class="card-text" id="paymentsValue"></p>
+            </div>
+        </div>
+    
+        <div class="card settings-container profile-details" id="settingsContainer">
+            <div class="card-body">
+                <h3 class="card-title">Settings</h3>
+                <p class="card-text" id="settingsValue"></p>
+            </div>
+        </div>
+        <!-- Add more profile elements as needed -->
+    </div>
+    
+    <script>
+
+    // Function to toggle visibility
+    function toggleVisibility(elementId) {
+        var elements = document.querySelectorAll('.profile-details');
+        elements.forEach(function (element) {
+            if (element.id === elementId) {
+                if (element.style.display === "none" || element.style.display === "") {
+                    element.style.display = "block";
+                } else {
+                    element.style.display = "none";
+                }
+            } else {
+                element.style.display = "none";
+            }
+        });
+    }
+
+    // Function to populate profile data
+    function populateProfileData() {
+        for (var key in userProfile) {
+            if (userProfile.hasOwnProperty(key)) {
+                var element = document.getElementById(key + 'Value');
+                if (element) {
+                    element.textContent = userProfile[key];
+                }
+            }
+        }
+    }
+
+    // Populate the profile data when the page loads
+    window.onload = populateProfileData;
+</script>
+</body>
+
+</html>

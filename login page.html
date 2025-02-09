@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('your-background-image.jpg');
+            background-size: cover;
+        }
+
+        .login-container {
+            background-color: rgba(114, 140, 161, 0.8);
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-container h2 {
+            color: #000000;
+            font-family: 'Times New Roman', Times, serif ;
+            font-size: x-large;
+        }
+
+        .login-form {
+            margin-top: 20px;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #000000;
+            text-align: left;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 16px; /* Increased padding */
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 12px;
+        }
+
+        .login-form button {
+            background-color: #3fa643;
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .signup-link {
+            margin-top: 16px;
+            color: #0e0808;
+        }
+        .login-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h2>Login</h2>
+    <form class="login-form" method="post" onsubmit="return validateAndNavigate()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+    <p class="signup-link">New to dineout? <a href="signup page.html">Sign up here</a></p>
+</div>
+
+<script>
+    function validateLogin() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        // Basic client-side validation
+        if (username === 'your_username' && password === 'your_password') {
+            // Redirect to a new page or perform other actions after successful login 
+            return true; // Return true if login is successful
+        } else {
+            alert('Invalid username or password. Please try again.');
+            return false; // Return false if login fails
+        }
+    }
+
+    function navigateToMainPage() {
+        // Use window.location.href to navigate to the main page
+        window.location.href = "mainpage.html";
+        return false; // Prevent the form from actually submitting
+    }
+
+    function validateAndNavigate() {
+        // Call validateLogin and navigateToMainPage based on the result
+        if (validateLogin()) {
+            navigateToMainPage();
+        }
+
+        // Prevent the form from actually submitting
+        return false;
+    }
+</script>
+</body>
+</html>
